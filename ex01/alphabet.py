@@ -15,7 +15,7 @@ def quiz(Alpha):
     print()
     print("表示文字:" , end="")
     van_chars = random.sample(chars,abs)
-    
+
     for i in chars:
         if i not in van_chars:
             print(i, end=" ")
@@ -41,7 +41,7 @@ def ans(van_chars):
             print("正解！すごい！")
             return True
         return False
-    
+        
 if __name__ == "__main__":
     Alpha = [chr(i+65) for i in range(alphabet)]
     
