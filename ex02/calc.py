@@ -15,7 +15,6 @@ def click_equal(event):
 
 root = tk.Tk()
 root.geometry("300x500")
-root.title("電卓")
 
 
 num_r = 1
