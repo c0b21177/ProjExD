@@ -16,11 +16,9 @@ def click_equal(event):
 def allclear(event):
     entry.delete(0, tk.END)
     
-
 root = tk.Tk()
 root.geometry("340x500")
 root.title("電卓")
-
 
 num_r = 1
 num_c = 0
@@ -32,10 +30,11 @@ for i, num in enumerate(numbers + operators, 1):
     btn.bind("<1>", button_click)
     btn.grid(row =num_r, column=num_c)
     num_c += 1
+
     if i%3 == 0:
         num_r += 1
         num_c = 0
-
+    
 btn = tk.Button(root, text= "=", font = ("", 30), width = "5", height = "1")
 btn.bind("<1>", click_equal)
 btn.grid(row = num_r, column = num_c)
