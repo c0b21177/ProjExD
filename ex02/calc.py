@@ -5,6 +5,7 @@ def button_click(event):
     btn = event.widget
     txt = btn["text"]
     #tkm.showwarning("txt", f"{txt}のボタンがクリックされました")
+    entry.insert(tk.END, txt)
 
 root = tk.Tk()
 root.geometry("300x500")
@@ -14,8 +15,10 @@ root.title("電卓")
 num_r = 1
 num_c = 0
 
-for i, num in enumerate(range(9, -1, -1), 1):
-    btn = tk.Button(root, text =f"{num}", font = ("Times New Roman", 30), width = "4", height = "2", command = button_click)
+numbers = list(range(9, -1, -1))
+operators = ["+", "="]
+for i, num in enumerate(numbers + operators, 1):
+    btn = tk.Button(root, text =f"{num}", font = ("", 30), width = "4", height = "2", command = button_click)
     btn.bind("<1>", button_click)
     btn.grid(row =num_r, column=num_c)
     num_c += 1
