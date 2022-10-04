@@ -13,13 +13,16 @@ root.title("電卓")
 num_r = 0
 num_c = 0
 
-for i in range(9, -1, -1):
-    btn = tk.Button(root, text =f"{i}", font = ("Times New Roman", 30), width = "4", height = "2", command = button_click)
-    btn.grid(row = num_r+4*i, column= num_c+2*i)
-    if num_r > 12:
-        num_r = 0
-    if num_c > 4:
+for i, num in enumerate(range(9, -1, -1), 1):
+    btn = tk.Button(root, text =f"{num}", font = ("Times New Roman", 30), width = "4", height = "2", command = button_click)
+    btn.bind("<1>", button_click)
+    btn.grid(row =num_r, column=num_c)
+    num_c += 1
+    if i%3 == 0:
+        num_r += 1
         num_c = 0
+
+
 
 
 #button_9 = tk.Button(root, text = "9", font = ("Times New Roman", 30), width = "4", height = "2", command = button_click)
