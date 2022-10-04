@@ -7,6 +7,12 @@ def button_click(event):
     #tkm.showwarning("txt", f"{txt}のボタンがクリックされました")
     entry.insert(tk.END, txt)
 
+def click_equal(event):
+    eqn = entry.get()
+    res = eval(eqn)
+    entry.delete(0, tk.END)
+    entry.insert(tk.END, res)
+
 root = tk.Tk()
 root.geometry("300x500")
 root.title("電卓")
@@ -16,7 +22,7 @@ num_r = 1
 num_c = 0
 
 numbers = list(range(9, -1, -1))
-operators = ["+", "="]
+operators = ["+"]
 for i, num in enumerate(numbers + operators, 1):
     btn = tk.Button(root, text =f"{num}", font = ("", 30), width = "4", height = "2", command = button_click)
     btn.bind("<1>", button_click)
@@ -25,6 +31,10 @@ for i, num in enumerate(numbers + operators, 1):
     if i%3 == 0:
         num_r += 1
         num_c = 0
+
+btn = tk.Button(root, text= "=", font = ("", 30), width = 4, height = 2)
+btn.bind("<1>", click_equal)
+btn.grid(row = num_r, column = num_c)
 
 entry = tk.Entry(root,  width = 10, font = (", 40"), justify = "right")
 entry.grid(row = 0, column= 0,columnspan=3)
