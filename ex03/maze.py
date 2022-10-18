@@ -29,10 +29,6 @@ def main_proc():
         mx = 1
         my = 1
 
-    if mx == 13 and my == 7:
-        root.unbind("<KeyPress>")
-        root.unbind("<KeyRelease>")
-
     canvas.coords("pic", cx, cy)
     root.after(100, main_proc)
 
@@ -46,6 +42,8 @@ def count_down():
         root.unbind("<KeyRelease>")
     elif mx == 13 and my == 7:
         label["text"] = "GAME CLEAR"
+        root.unbind("<KeyPress>")
+        root.unbind("<KeyRelease>")
         return()
     root.after(1000, count_down)
 
