@@ -25,23 +25,23 @@ def main_proc():
     cx = mx*100 + 50
     cy = my*100 + 50
 
-    if key == "Shift_L":
+    if key == "Shift_L":#左のシフトを押すとリセットされる
         mx = 1
         my = 1
 
     canvas.coords("pic", cx, cy)
     root.after(100, main_proc)
 
-def count_down():
+def count_down():#カウントダウンタイマー
     global tmr
     tmr -= 1
     label["text"] = tmr
     if tmr <= 0:
-        label["text"] = "TIME OVER"
-        root.unbind("<KeyPress>")
+        label["text"] = "TIME OVER"#タイムオーバー
+        root.unbind("<KeyPress>")#unbindで動作の停止
         root.unbind("<KeyRelease>")
     elif mx == 13 and my == 7:
-        label["text"] = "GAME CLEAR"
+        label["text"] = "GAME CLEAR"#ゲームクリア
         root.unbind("<KeyPress>")
         root.unbind("<KeyRelease>")
         return()
