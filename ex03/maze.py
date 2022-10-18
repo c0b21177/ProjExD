@@ -42,6 +42,8 @@ def count_down():
     label["text"] = tmr
     if tmr <= 0:
         label["text"] = "TIME OVER"
+        root.unbind("<KeyPress>")
+        root.unbind("<KeyRelease>")
     elif mx == 13 and my == 7:
         label["text"] = "GAME CLEAR"
         return()
