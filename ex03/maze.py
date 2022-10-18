@@ -13,15 +13,18 @@ def key_up(event):
     #tkm.showinfo("キー押下", f"{key}キーが押されました")
 
 def main_proc():
-    global cx, cy
-    if key == "Up":
-        cy -= 20
-    elif key == "Down":
-        cy += 20
-    elif key == "Left":
-        cx -= 20
-    elif key == "Right":
-        cx += 20
+    global cx, cy, mx, my
+    if key == "Up" and maze[my-1][mx] == 0:
+        my -= 1
+    elif key == "Down" and maze[my+1][mx] == 0:
+        my += 1
+    elif key == "Left" and maze[my][mx-1] == 0:
+        mx -= 1
+    elif key == "Right" and maze[my][mx+1] == 0:
+        mx += 1
+    cx = 50 + mx * 100
+    cy = 50 + my * 100
+
     canvas.coords("pic", cx, cy)
     root.after(100, main_proc)
 
@@ -30,16 +33,17 @@ if __name__ == "__main__":
     root.geometry("1500x900")
     root.title("迷えるこうかとん")
 
-    cx, cy = 300, 400
+    mx, my = 1, 1
+    cx, cy = 50 + mx * 100, 50 + my * 100
     key = ""
 
     canvas = tk.Canvas(root, width = 1500, height = 900, bg = "BLACK")
+    maze = maze_maker.make_maze(15,9)
+    print(maze)
+    maze_maker.show_maze(canvas, maze)
     pic = tk.PhotoImage(file = "fig/9.png")
     canvas.create_image(cx, cy, image = pic, tag = "pic")
     canvas.pack()
-
-    maze = maze_maker.make_maze(15,9)
-    maze_maker.show_maze(canvas, maze)
 
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
