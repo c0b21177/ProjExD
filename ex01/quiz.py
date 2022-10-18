@@ -7,8 +7,6 @@ num = random.randint(0,2)
 
 def quiz():
     print("問題:" + Q[num])
-
-def ans():
     Ans = input("回答:")
     if Ans in A[num]:
         print("正解！！")
@@ -16,4 +14,3 @@ def ans():
         print("不正解！！")
 
 quiz()
-ans()
