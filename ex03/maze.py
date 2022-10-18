@@ -34,7 +34,7 @@ def main_proc():
 
 def count_down():
     global tmr
-    tmr = tmr-1
+    tmr -= 1
     label["text"] = tmr
     if tmr <= 0:
         label["text"] = "TIME OVER"
