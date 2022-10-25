@@ -5,20 +5,22 @@ import random
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     scrn_sfc = pg.display.set_mode((1600,900))
-    bg_sfc = pg.image.load("pg_bg.jpg")
+
+    bg_sfc = pg.image.load("pg_bg.jpg")#背景
     bg_rct = bg_sfc.get_rect()
-    tori_sfc = pg.image.load("fig/9.png")
+
+    tori_sfc = pg.image.load("fig/9.png")#こうかとん
     tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 2.0)
     tori_rct = tori_sfc.get_rect()
     tori_rct.center = 900, 400
     font = pg.font.Font(None, 80)
 
-    bomb_sfc = pg.image.load("bomb01.png")
+    bomb_sfc = pg.image.load("bomb01.png")#爆弾
     bomb_sfc = pg.transform.rotozoom(bomb_sfc, 0, 0.1)
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx, bomb_rct.centery = random.randint(10,300), random.randint(10,890)
 
-    power_sfc = pg.Surface((350, 50))
+    power_sfc = pg.Surface((350, 50))#スタミナ
     power_rct = power_sfc.get_rect()
     power_rct.center = 1375, 75
 
@@ -39,13 +41,13 @@ def main():
             if event.type == pg.QUIT:
                 return
 
-        key_lst = pg.key.get_pressed()
+        key_lst = pg.key.get_pressed()#こうかとんの移動
         if key_lst[pg.K_LEFT]:
             tori_rct.centerx -= 1
-            if key_lst[pg.K_LSHIFT] and powerx >= 0:
+            if key_lst[pg.K_LSHIFT] and powerx >= 0:#ダッシュとスタミナ消費
                 tori_rct.centerx -= 2
                 powerx -= 0.5
-            if not key_lst[pg.K_LSHIFT] and powerx <= 350:
+            if not key_lst[pg.K_LSHIFT] and powerx <= 350:#スタミナの回復
                 powerx += 0.1
         elif key_lst[pg.K_RIGHT]:
             tori_rct.centerx += 1
@@ -72,7 +74,7 @@ def main():
             powerx += 0.5
             
 
-        if tori_rct.left < 0 :
+        if tori_rct.left < 0 :#こうかとんの端の判定
             tori_rct.move_ip(2, 0)
         if tori_rct.right > 1600:
             tori_rct.move_ip(-2, 0)
@@ -82,12 +84,12 @@ def main():
             tori_rct.move_ip(0, -2)
             
 
-        if bomb_rct.left < -22 or bomb_rct.right > 1622:
+        if bomb_rct.left < -22 or bomb_rct.right > 1622:#爆弾の端の判定
             vx = -vx
         if bomb_rct.top < -20 or bomb_rct.bottom > 920:
             vy = -vy
 
-        if tori_rct.colliderect(bomb_rct):
+        if tori_rct.colliderect(bomb_rct):#こうかとんと爆弾の衝突判定
             return
 
         pg.display.update()
