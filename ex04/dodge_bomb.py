@@ -1,7 +1,6 @@
 import pygame as pg
 import sys
 import random
-import time
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -16,9 +15,6 @@ def main():
 
     bomb_sfc = pg.image.load("bomb01.png")
     bomb_sfc = pg.transform.rotozoom(bomb_sfc, 0, 0.1)
-    #bomb_sfc = pg.Surface((20,20))
-    #bomb_sfc.set_colorkey((0,0,0))
-    #pg.draw.circle(bomb_sfc, (255,0,0), (10,10), 10)
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx, bomb_rct.centery = random.randint(10,300), random.randint(10,890)
 
