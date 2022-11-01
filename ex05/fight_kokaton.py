@@ -43,7 +43,7 @@ class Bird():
                     self.rct.centery -= delta[1]
         self.blit(scrn)
 
-class Enemy():
+class Enemy():#敵を追加する
     def __init__(self, png, zoom, speed, scrn:Screen):
         sfc = pg.image.load(png)
         self.sfc = pg.transform.rotozoom(sfc, 0, zoom)
@@ -62,7 +62,7 @@ class Enemy():
         self.vy *= tate
         self.blit(scrn)
 
-class Shot():
+class Shot():#弾を撃つ
     def __init__(self, png, zoom, speed, cent):
         sfc = pg.image.load(png)
         self.sfc = pg.transform.rotozoom(sfc, 0, zoom)
