@@ -67,11 +67,7 @@ class Shot():
         sfc = pg.image.load(png)
         self.sfc = pg.transform.rotozoom(sfc, 0, zoom)
         self.rct = self.sfc.get_rect()
-        #self.sfc = pg.Surface((rad*2, rad*2))
-        #self.sfc.set_colorkey((0, 0, 0))
-        #pg.draw.circle(self.sfc, color, (rad, rad), rad)
-        #self.rct = self.sfc.get_rect()
-        self.rct.center = cent
+        self.rct.centerx, self.rct.centery = cent
         self.bx, self.by = speed
     
     def blit(self, scrn:Screen):
