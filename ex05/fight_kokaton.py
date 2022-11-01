@@ -78,7 +78,6 @@ class Shot():
         self.blit(scrn)
 
 
-
 def check_bound(obj_rct, scrn_rct):
     """
     obj_rct：こうかとんrct，または，爆弾rct
