@@ -119,13 +119,7 @@ def main():
             gun.update(scrn)
 
 
-        if tori.rct.colliderect(teki.rct):
-            return
-
-        if tori.rct.colliderect(teki2.rct):
-            return
-
-        if tori.rct.colliderect(teki3.rct):
+        if tori.rct.colliderect(teki.rct) or tori.rct.colliderect(teki2.rct) or tori.rct.colliderect(teki3.rct):
             return
 
         pg.display.update()
